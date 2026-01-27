@@ -485,7 +485,7 @@ def analyze_graph_properties(graph_dict):
 
 # Example usage - using the same paths as the original code
 if __name__ == "__main__":
-    folder_path = "/Users/ACER/Desktop/quantum_circuit_instances"  # Look in the QASM_graphs directory by default
+    folder_path = "quantum_circuit_instances"  # Look in the QASM_graphs directory by default
     output_file = "qasm_graphs_original.pkl"  # Save to current directory by default
     graphs_dict = process_qasm_folder(folder_path, output_file)
 
@@ -497,3 +497,4 @@ if __name__ == "__main__":
         print(f"\nCircuit: {circuit}")
         for key, value in stats.items():
             print(f"  {key}: {value}")
+
