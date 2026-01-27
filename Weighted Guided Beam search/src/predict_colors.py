@@ -7,7 +7,7 @@ import networkx as nx
 from src.predict_mis import predict_mis
 
 
-def predict_colors(model, adj_list, time_budget=500, max_queue_size=4, weights=None):
+def predict_colors(model, adj_list, time_budget=1000, max_queue_size=4, weights=None):
     """
     Implements tree search algorithm to find maximum independent set using
     multiple probability maps from trained GCN model. Uses NumPy adjacency list.
@@ -257,5 +257,6 @@ def predict_colors(model, adj_list, time_budget=500, max_queue_size=4, weights=N
     # If no solution was found, return a conservative upper bound (number of nodes)
     if min_colours == float('inf'):
         return num_nodes
+
 
     return min_colours
