@@ -1,0 +1,11 @@
+# Then create the virtual environment "gnn_opt":
+# conda create -n gnn_opt python=3.7 --file requirements.txt -c dglteam -y
+numpy
+pickle
+queue
+random
+time
+networkx
+tqdm
+pytorch
+gurobipy # was required for label generation 
