@@ -35,11 +35,11 @@ def debug_print(message, file=None):
 
 
 # Configuration
-graphs_file = "/Users/ACER/Desktop/basicMIS_multiplesolns/networkx_graphs.pkl"
-output_file = "/Users/ACER/PycharmProjects/Mixed-Graph-Coloring-Algorithms/Value aware MIS coloring/model_parameters/output_red_colors.txt"
-model_path = "/Users/ACER/PycharmProjects/Mixed-Graph-Coloring-Algorithms/Value aware MIS coloring/model_parameters/value_aware_gcn.pth"
-names_file = "/Users/ACER/Desktop/basicMIS_multiplesolns/graph_names.pkl"
-colors_file = "/Users/ACER/Desktop/basicMIS_multiplesolns/graph_colors.pkl"
+graphs_file = "networkx_graphs.pkl"
+output_file = "output_red_colors.txt"
+model_path = "value_aware_gcn.pth"
+names_file = "graph_names.pkl"
+colors_file = "graph_colors.pkl"
 
 # Create output directory if it doesn't exist
 os.makedirs(os.path.dirname(config.MODEL_SAVE_PATH), exist_ok=True)
@@ -86,5 +86,6 @@ for i, adj_list in enumerate(adj_lists):
       # Write both execution time and colors to file
       print(f"  - Execution time: {processing_time:.2f} seconds", file=output_stream)
       print(f"  - Colors required: {num_colors}", file=output_stream)
+
 
 output_stream.close()
