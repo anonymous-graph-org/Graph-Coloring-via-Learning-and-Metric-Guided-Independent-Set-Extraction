@@ -1,0 +1,8 @@
+Circuit Name	Depth
+------------------------------
+adder_n64.qasm	79
+adder_n64_transpiled.qasm	463
+grover_n2.qasm	12
+grover_n2_transpiled.qasm	12
+multiplier_n15.qasm	49
+multiplier_n15_transpiled.qasm	257
