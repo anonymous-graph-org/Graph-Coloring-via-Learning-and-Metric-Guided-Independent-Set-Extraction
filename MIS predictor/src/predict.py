@@ -7,7 +7,7 @@ import copy
 from collections import defaultdict
 
 
-def predict_mis(model, adj_list, time_budget=120, num_maps=32, max_solutions=16):
+def predict_mis(model, adj_list, time_budget=60, num_maps=32, max_solutions=16):
     """
     Optimized tree search algorithm to find multiple maximum independent sets using
     multiple probability maps from trained GCN model. Uses NumPy adjacency list representation.
@@ -189,4 +189,5 @@ def predict_mis(model, adj_list, time_budget=120, num_maps=32, max_solutions=16)
         return list(best_solutions.values())
     else:
         # Random sampling to maintain diversity as in original algorithm
+
         return random.sample(list(best_solutions.values()), max_solutions)
