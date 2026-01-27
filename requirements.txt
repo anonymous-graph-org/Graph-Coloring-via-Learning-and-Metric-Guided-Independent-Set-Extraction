@@ -9,3 +9,4 @@ networkx
 tqdm
 pytorch
 gurobipy # was required for label generation 
+qiskit  # for quantum circuit optimization 
