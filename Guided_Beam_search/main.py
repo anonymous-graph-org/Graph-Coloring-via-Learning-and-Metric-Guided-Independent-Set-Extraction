@@ -28,11 +28,11 @@ def debug_print(message, file=None):
         file.flush()  # Ensure it's written immediately
 
 # Configuration
-graphs_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/networkx_graphs.pkl'
-output_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/output_citation.txt'
-model_path = "/Users/ACER/Desktop/train_gcn_model.pth"
-names_file = "/Users/ACER/Desktop/basicMIS_multiplesolns/graph_names.pkl"
-colors_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_colors.pkl'
+graphs_file = 'networkx_graphs.pkl'
+output_file = 'output.txt'
+model_path = "train_gcn_model.pth"
+names_file = "graph_names.pkl"
+colors_file = 'graph_colors.pkl'
 
 
 start_time = time.time()
@@ -73,3 +73,4 @@ for i, adj_list in enumerate(adj_lists):
     print(f"  - Colors required: {num_colors}")
 
 output_stream.close()
+
