@@ -8,15 +8,14 @@ import sys
 
 if __name__ == "__main__":
 
-    graph_file = "/Users/ACER/Desktop/basicMIS_multiplesolns/graphs.pickle"
-    label_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_labels.pickle'
-    output_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/output_basic.txt'
-    save_path = '/Users/ACER/Desktop/basicMIS_multiplesolns/model_parameters/gcn_model.pth'
+    graph_file = "graphs.pickle"
+    label_file = 'graph_labels.pickle'
+    output_file = 'output_basic.txt'
+    save_path = 'gcn_model.pth'
     # names_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_names.pkl'
     # colors_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_colors.pkl'
 
     graphs = load_data(graph_file)
-    print("abc")
     sys.stdout = open(output_file, 'w', buffering=1) 
     labels_dict = load_labels(label_file,graphs)
     
@@ -28,8 +27,9 @@ if __name__ == "__main__":
     epochs = 200
     learning_rate = 0.0001
 
-    #train_model(graphs, labels_dict, hidden_dim, num_layers, epochs, learning_rate, save_path)
+    train_model(graphs, labels_dict, hidden_dim, num_layers, epochs, learning_rate, save_path)
     test_model(X_test,save_path,hidden_dim,num_layers)
     sys.stdout.close()
+
 
 
