@@ -203,7 +203,7 @@ def predict_colors(model, adj_list, time_budget=500, max_queue_size=4, weights=N
             break
 
         # Sort states by combined metric
-        states.sort(key=lambda x: x.get_edge_density_with_colors_used())
+        states.sort(key=lambda x: x.get_edge_density_with_colors_used()) # choose the required metric here
 
         # Select the best state (lowest combined metric)
         current_state = states[0]
@@ -264,5 +264,6 @@ def predict_colors(model, adj_list, time_budget=500, max_queue_size=4, weights=N
     # If no solution was found, return a conservative upper bound (number of nodes)
     if min_colours == float('inf'):
         return num_nodes
+
 
     return min_colours
