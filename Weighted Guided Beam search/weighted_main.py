@@ -513,7 +513,7 @@ def main():
         log(f"Error loading GCN model: {e}")
         log("Exiting.")
         return
-    """
+    
     # Load training data using custom loader for NetworkX graphs
     log("\n" + "=" * 50)
     log("LOADING TRAINING DATA")
@@ -608,7 +608,7 @@ def main():
         pickle.dump(normalization_params, f)
     log(f"Saved predictor model to {os.path.join(trained_weights_dir, 'weight_predictor.pth')}")
     log(f"Saved normalization parameters to {os.path.join(trained_weights_dir, 'normalization_params.pkl')}")
-    """
+    
 
     # Load test graphs
     log("\n" + "=" * 50)
@@ -783,3 +783,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
