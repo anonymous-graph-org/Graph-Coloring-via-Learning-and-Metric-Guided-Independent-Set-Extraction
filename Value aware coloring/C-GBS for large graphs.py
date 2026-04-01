@@ -129,15 +129,7 @@ class Degree12Reducer:
 
 
 def networkx_to_adj_list(nx_graph):
-    """
-    Convert a NetworkX graph to an adjacency list representation.
-
-    Args:
-        nx_graph (networkx.Graph): NetworkX graph
-
-    Returns:
-        list: Adjacency list where adj_list[i] contains neighbors of node i
-    """
+    
     # Get number of nodes
     num_nodes = nx_graph.number_of_nodes()
 
@@ -162,38 +154,16 @@ def networkx_to_adj_list(nx_graph):
 
 
 def load_model(model_path, model_class, device, *model_args, **model_kwargs):
-    """
-    Load a trained model from the specified path.
-
-    Args:
-        model_path (str): Path to the saved model.
-        model_class (torch.nn.Module): The model class to load.
-        *model_args: Arguments to pass to model_class constructor.
-        **model_kwargs: Keyword arguments to pass to model_class constructor.
-
-    Returns:
-        torch.nn.Module: The loaded model.
-    """
-    # 1. Decide device safely
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Create model instance
     model = model_class(*model_args, **model_kwargs)
 
-    # 3. Load weights safely
+    # Load weights safely
     state_dict = torch.load(model_path, map_location=device)
     model.load_state_dict(state_dict)
 
-    # 4. Move model to device
+    # Move model to device
     model.to(device)
-
-    """ Load state dictionary
-    try:
-        # Try loading with specified map_location
-        model.load_state_dict(torch.load(model_path, map_location=torch.device('cuda')))
-    except:
-        # Fallback to default loading
-        model.load_state_dict(torch.load(model_path))"""
 
     # Set to evaluation mode
     model.eval()
@@ -477,21 +447,7 @@ def predict_colors(model, adj_list, device, time_budget=1000, max_queue_size=4):
 
 
 def predict_mis(model, adj_list, device, time_budget=120, num_maps=32, max_solutions=16):
-    """
-    Optimized tree search algorithm to find multiple maximum independent sets using
-    multiple probability maps from trained GCN model. Uses NumPy adjacency list representation.
-
-    Args:
-        model: Trained DeepGCN model
-        adj_list (numpy.ndarray): Adjacency list representation of the graph
-                                 [node_idx][neighbor_indices]
-        time_budget (int): Time limit in seconds
-        num_maps (int): Number of probability maps to generate
-        max_solutions (int): Maximum number of solutions to return
-
-    Returns:
-        list: List of MIS solutions (each a dict of node indices) with the best size
-    """
+    
     device = next(model.parameters()).device
     model.eval()
 
@@ -1001,10 +957,6 @@ def adjlist_to_nx(adj_list):
     return G
 
 def predict_value_colors(model, adj_list, device, time_budget=300, max_queue_size=4):
-
-    # ----------------------------------------
-    # Reduce graph
-    # ----------------------------------------
 
     original_graph = adjlist_to_nx(adj_list)
 
