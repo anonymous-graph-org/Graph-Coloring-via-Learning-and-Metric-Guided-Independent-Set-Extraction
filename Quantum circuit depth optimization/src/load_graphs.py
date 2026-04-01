@@ -1,22 +1,7 @@
 import pickle
 
 def load_graphs(pkl_file_path):
-    """
-    Load a dictionary of quantum circuit dependency graphs from a pickle file
-    
-    Parameters:
-        pkl_file_path (str): Path to the pickle file containing the graph dictionary
-        
-    Returns:
-        dict: Dictionary where keys are circuit names and values are NetworkX graph objects
-    
-    Example:
-        >>> graphs = load_graphs("qasm_graphs_small.pkl")
-        >>> print(list(graphs.keys()))
-        ['bell_state', 'grover', 'qft']
-        >>> G = graphs['grover']
-        >>> print(f"Graph has {G.number_of_nodes()} nodes and {G.number_of_edges()} edges")
-    """
+    # Load a dictionary of quantum circuit dependency graphs from a pickle file
     try:
         with open(pkl_file_path, 'rb') as f:
             graphs = pickle.load(f)
