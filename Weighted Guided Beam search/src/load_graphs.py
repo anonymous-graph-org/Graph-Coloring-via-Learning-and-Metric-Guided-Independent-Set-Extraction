@@ -51,15 +51,6 @@ def load_graphs_from_file(graphs_file, names_file, colors_file, return_nx=False)
     return graph_objects, names, colors
 
 def networkx_to_adj_list(nx_graph):
-    """
-    Convert a NetworkX graph to an adjacency list representation.
-    
-    Args:
-        nx_graph (networkx.Graph): NetworkX graph
-        
-    Returns:
-        list: Adjacency list where adj_list[i] contains neighbors of node i
-    """
     # Get number of nodes
     num_nodes = nx_graph.number_of_nodes()
     
