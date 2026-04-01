@@ -1,11 +1,4 @@
-#!/usr/bin/env python3
-"""
-Improved QASM Parser and Graph Builder for Quantum Circuit Optimization
-
-This module parses QASM files and builds dependency graphs for quantum circuit optimization.
-It correctly handles quantum-specific dependencies including entanglement tracking and
-properly models commutativity relationships between quantum gates.
-"""
+# QASM Parser and Graph Builder for Quantum Circuit Optimization
 
 import re
 import os
@@ -470,16 +463,6 @@ def analyze_graph_properties(graph_dict):
             'density': nx.density(graph)
         }
 
-        # Calculate potential parallelism (theoretical)
-        """try:
-            longest_path = nx.dag_longest_path_length(graph)
-            results[name]['min_depth'] = longest_path + 1  # +1 because path length counts edges
-            results[name]['parallelism_ratio'] = graph.number_of_nodes() / (longest_path + 1)
-        except nx.NetworkXError:
-            # The graph might have cycles due to undirected edges
-            results[name]['min_depth'] = "Unknown (cycles)"
-            results[name]['parallelism_ratio'] = "Unknown" """
-
     return results
 
 
@@ -491,7 +474,7 @@ if __name__ == "__main__":
 
     # Optionally analyze and print graph properties for the paper
     analysis = analyze_graph_properties(graphs_dict)
-    print("\nDependency Graph Analysis (useful for your paper):")
+    print("\nDependency Graph Analysis:")
     print("==================================================")
     for circuit, stats in analysis.items():
         print(f"\nCircuit: {circuit}")
