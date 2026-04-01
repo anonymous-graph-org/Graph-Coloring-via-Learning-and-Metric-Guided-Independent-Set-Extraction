@@ -943,22 +943,7 @@ def predict_value_aware_mis(model,adj_list,select_values,nonselect_values,device
 
             # convert to original node ids
             vertices = [original_nodes[i] for i in sorted_indices.cpu()]
-            """
-            # keep only vertices with probability > 0.5
-            valid_mask = probs > 0.5
-
-            # get indices of those vertices
-            filtered_indices = torch.where(valid_mask)[0]
-
-            # sort them by probability (descending)
-            sorted_indices = filtered_indices[torch.argsort(probs[filtered_indices], descending=True)]
-
-            # convert to original node ids
-            vertices = [original_nodes[i] for i in sorted_indices.cpu().numpy()]
-
-            vertices_indices=torch.argsort(probs,descending=True).cpu().numpy()
-            vertices=[original_nodes[v] for v in vertices_indices]"""
-
+           
             for v in vertices:
 
                 if v in new_state.labels:
