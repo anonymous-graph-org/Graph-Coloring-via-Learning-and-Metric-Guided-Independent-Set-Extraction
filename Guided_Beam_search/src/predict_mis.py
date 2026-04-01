@@ -9,19 +9,7 @@ from collections import defaultdict
 def predict_mis(model, adj_list, time_budget=60, num_maps=32, max_solutions=16):
     """
     Optimized tree search algorithm to find multiple maximum independent sets using
-    multiple probability maps from trained GCN model. Uses NumPy adjacency list representation.
-
-    Args:
-        model: Trained DeepGCN model
-        adj_list (numpy.ndarray): Adjacency list representation of the graph
-                                 [node_idx][neighbor_indices]
-        time_budget (int): Time limit in seconds
-        num_maps (int): Number of probability maps to generate
-        max_solutions (int): Maximum number of solutions to return
-
-    Returns:
-        list: List of MIS solutions (each a dict of node indices) with the best size
-    """
+    multiple probability maps from trained GCN model. Uses NumPy adjacency list representation."""
     device = next(model.parameters()).device
     model.eval()
     
