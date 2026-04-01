@@ -14,7 +14,6 @@ from queue import Queue
 import numpy as np
 from collections import defaultdict
 
-
 class Degree12Reducer:
     """
     Performs degree-1 (pendant) and degree-2 (vertex folding) reductions
@@ -290,13 +289,6 @@ class DeepGCN(nn.Module):
         features_tensor = torch.tensor(features, device=device)
 
         return adj_tensor, degree_tensor, features_tensor
-
-
-import time
-from queue import Queue
-import copy
-import numpy as np
-
 
 def predict_colors(model, adj_list, device, time_budget=1000, max_queue_size=4):
     """
@@ -667,7 +659,7 @@ def predict_mis(model, adj_list, device, time_budget=60, num_maps=32, max_soluti
         return random.sample(list(best_solutions.values()), max_solutions)
 
 
-def find_colors(adj_list, model_path, device, output_stream):
+def find_colors(adj_list, model_path, device, output_stream):  # GBS Method 
     start_time = time.time()
     hidden_dim = 32
     num_layers = 20
@@ -1571,7 +1563,7 @@ class SimplifiedValueAwareGraph:
         return graph_1
 
 
-def color_graph(adj_list, model_path, device, output_stream):
+def color_graph(adj_list, model_path, device, output_stream):  # value-aware approach
     #start_time = time.time()
     model = load_value_aware_model(model_path, device, hidden_dim=HIDDEN_DIM, num_layers=NUM_LAYERS, num_maps=NUM_MAPS)
     # Predict colors with original stdout
@@ -1671,12 +1663,12 @@ if __name__ == "__main__":
             sys.stdout = original_stdout
             
             
-    graphs_file = "/home/maths/phd/maz238695/Beam_searchOPT32/networkx_graphs.pkl"
-    output_file = "/home/maths/phd/maz238695/Beam_searchOPT32/output_value.txt"
-    names_file = "/home/maths/phd/maz238695/Beam_searchOPT32/graph_names.pkl"
-    colors_file = "/home/maths/phd/maz238695/Beam_searchOPT32/graph_colors.pkl"
-    model_path1 = "/home/maths/phd/maz238695/Beam_searchOPT32/gcn_model.pth"
-    model_path2 = "/home/maths/phd/maz238695/Beam_searchOPT32/Value_aware_MIS/model_parameters/value_aware_gcn.pth"
+    graphs_file = "networkx_graphs.pkl"
+    output_file = "output_value.txt"
+    names_file = "graph_names.pkl"
+    colors_file = "graph_colors.pkl"
+    model_path1 = "gcn_model.pth"
+    model_path2 = "value_aware_gcn.pth"
     
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
