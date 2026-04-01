@@ -5,16 +5,7 @@ import networkx as nx
 def load_graphs_from_file(graphs_file, names_file, colors_file, return_nx=False):
     """
     Loads graphs, their names, and their colors from pickle files and converts graphs
-    to NumPy adjacency list representation or keeps them as NetworkX graphs.
-    
-    Parameters:
-        graphs_file (str): Path to the pickle file containing the graphs.
-        names_file (str): Path to the pickle file containing the graph names.
-        colors_file (str): Path to the pickle file containing the graph colors.
-        return_nx (bool): If True, return original NetworkX graphs instead of adjacency lists
-    Returns:
-        tuple: A list of graphs (as adj lists or NetworkX graphs), a list of graph names, and a list of graph colors.
-    """
+    to NumPy adjacency list representation or keeps them as NetworkX graphs. """
     with open(graphs_file, 'rb') as file:
         graphs_dict = pickle.load(file)
     
@@ -56,15 +47,7 @@ def load_graphs_from_file(graphs_file, names_file, colors_file, return_nx=False)
     return graph_objects, names, colors
 
 def networkx_to_adj_list(nx_graph):
-    """
-    Convert a NetworkX graph to an adjacency list representation.
     
-    Args:
-        nx_graph (networkx.Graph): NetworkX graph
-        
-    Returns:
-        list: Adjacency list where adj_list[i] contains neighbors of node i
-    """
     # Get number of nodes
     num_nodes = nx_graph.number_of_nodes()
     
@@ -86,31 +69,3 @@ def networkx_to_adj_list(nx_graph):
         adj_list[dst_idx].append(src_idx)  # For undirected graphs
     
     return adj_list
-
-
-def load_adj_lists_from_citation(pickle_path):
-    """
-    Load a pickle file containing NetworkX graphs and
-    return adjacency lists for each graph.
-
-    Args:
-        pickle_path (str): Path to pickle file
-
-    Returns:
-        dict: {graph_name: {node: [neighbors]}}
-    """
-    with open(pickle_path, "rb") as f:
-        graphs_dict = pickle.load(f)
-
-    graph_objects = []
-
-    for name, G in graphs_dict.items():
-        if not isinstance(G, nx.Graph):
-            raise TypeError(f"{name} is not a NetworkX graph")
-
-        adj_list = networkx_to_adj_list(G)
-        graph_objects.append(adj_list)
-
-
-
-    return graph_objects
