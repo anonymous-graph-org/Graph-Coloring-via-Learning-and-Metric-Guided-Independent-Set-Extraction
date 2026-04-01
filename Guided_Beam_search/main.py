@@ -28,7 +28,7 @@ def debug_print(message, file=None):
         file.flush()  # Ensure it's written immediately
 
 # Configuration
-graphs_file = 'networkx_graphs.pkl'
+graphs_file = 'networkx_graphs.pkl' # collection of 71 graphs from dimacs dataset 
 output_file = 'output.txt'
 model_path = "train_gcn_model.pth"
 names_file = "graph_names.pkl"
@@ -54,10 +54,6 @@ print("Starting graph processing...", file=output_stream)
 
 # Process each graph
 for i, adj_list in enumerate(adj_lists):
-    if i<1 or i>1:
-        continue
-    # Predict colors with original stdout
-    print(adj_list)
     num_nodes = len(adj_list)
     print(num_nodes)
     num_edges = sum(len(neighbors) for neighbors in adj_list) // 2
