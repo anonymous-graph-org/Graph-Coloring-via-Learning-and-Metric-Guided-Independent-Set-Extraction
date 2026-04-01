@@ -3,22 +3,7 @@ import heapq
 from copy import deepcopy
 
 def predict_colors(graph, model, queue_capacity=4):
-    """
-    Predict the number of colors needed to color a graph using beam search approach.
-    Handles mixed graphs with both directed and undirected edges.
-    Only directed edges contribute to indegree calculations.
-    
-    Args:
-        graph: The dependency graph representation of a quantum circuit
-        model: The model used for predicting MIS
-        queue_capacity: Maximum size of the queue (beam width)
-        time_budget: Time budget for the algorithm in seconds
-        
-    Returns:
-        min_colors: Minimum number of colors needed
-        coloring: Dictionary mapping nodes to their color assignments
-    """
-    
+    # Predict the number of colors needed to color a graph using beam search approach.
     # Helper function to extract processable nodes (in-degree 0)
     # Only considers directed edges for indegree calculation
     def extract_processable(g):
