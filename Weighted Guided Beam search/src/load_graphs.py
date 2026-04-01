@@ -7,11 +7,6 @@ def load_graphs_from_file(graphs_file, names_file, colors_file, return_nx=False)
     Loads graphs, their names, and their colors from pickle files and converts graphs
     to NumPy adjacency list representation or keeps them as NetworkX graphs.
     
-    Parameters:
-        graphs_file (str): Path to the pickle file containing the graphs.
-        names_file (str): Path to the pickle file containing the graph names.
-        colors_file (str): Path to the pickle file containing the graph colors.
-        return_nx (bool): If True, return original NetworkX graphs instead of adjacency lists
     Returns:
         tuple: A list of graphs (as adj lists or NetworkX graphs), a list of graph names, and a list of graph colors.
     """
