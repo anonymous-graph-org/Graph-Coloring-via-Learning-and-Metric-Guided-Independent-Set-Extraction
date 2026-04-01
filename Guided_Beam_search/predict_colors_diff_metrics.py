@@ -7,17 +7,7 @@ import networkx as nx
 from src.predict_mis import predict_mis
 
 def adj_list_to_graph(adj_list):
-    """
-    Convert an adjacency list (dict or list) back into a NetworkX graph.
-
-    Parameters:
-        adj_list: dict or list
-            - If dict: {node: [neighbors]}
-            - If list: [ [neighbors of node 0], [neighbors of node 1], ... ]
-
-    Returns:
-        G (networkx.Graph): The constructed graph.
-    """
+    
     G = nx.Graph()
 
     # Case 1: Dictionary format {node: [neighbors]}
@@ -38,16 +28,7 @@ def predict_colors(model, adj_list, time_budget=500, max_queue_size=4, weights=N
     """
     Implements tree search algorithm to find maximum independent set using
     multiple probability maps from trained GCN model. Uses NumPy adjacency list.
-
-    Args:
-        model: Trained DeepGCN model
-        adj_list (numpy.ndarray): Adjacency list representation of the graph
-        time_budget (int): Time limit in seconds
-        max_queue_size (int): Maximum number of states to keep in queue
-        weights (list): Weights for different metrics [w_edge_density, w_avg_degree, w_progress, w_efficiency]
-
-    Returns:
-        int: Minimum number of colors required
+    Returns: Minimum number of colors required
     """
 
     num_nodes = len(adj_list)
