@@ -3,15 +3,7 @@ import pickle
 import numpy as np
 
 def load_data(file_path):
-    """
-    Load data from a pickle file and convert to NumPy adjacency list representation.
-    
-    Args:
-        file_path (str): Path to the pickle file
-        
-    Returns:
-        list: List of adjacency lists, each represented as a list of lists
-    """
+    # Load data from a pickle file and convert to NumPy adjacency list representation.
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
         
@@ -30,15 +22,9 @@ def load_data(file_path):
     return adj_lists
 
 def edge_index_to_adj_list(edge_index):
-    """
-    Convert an edge index tensor to an adjacency list.
+    # Convert an edge index tensor to an adjacency list.
     
-    Args:
-        edge_index: Tensor of shape [2, num_edges] containing edge indices
-        
-    Returns:
-        list: Adjacency list where adj_list[i] contains neighbors of node i
-    """
+    
     edges = edge_index.t().tolist()
     
     # Find the maximum node index to determine the size of the adjacency list
