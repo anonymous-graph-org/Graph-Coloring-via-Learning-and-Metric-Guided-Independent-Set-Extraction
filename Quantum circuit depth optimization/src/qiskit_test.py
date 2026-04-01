@@ -42,7 +42,7 @@ def calculate_circuit_depths(folder_path, output_file="qiskit.txt"):
 
 def main():
     # Path to the folder containing QASM files
-    folder_path = "/Users/ACER/Desktop/quantum_circuit_instances"  # Replace with your actual folder path
+    folder_path = "quantum_circuit_instances" 
     
     # Output file for results
     output_file = "qiskit.txt"
