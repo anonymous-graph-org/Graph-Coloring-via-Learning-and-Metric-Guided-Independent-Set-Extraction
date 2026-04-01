@@ -3,15 +3,7 @@ import pickle
 import numpy as np
 
 def load_data(file_path):
-    """
-    Load data from a pickle file and convert to NumPy adjacency list representation.
-    
-    Args:
-        file_path (str): Path to the pickle file
-        
-    Returns:
-        list: List of adjacency lists, each represented as a list of lists
-    """
+   
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
         
