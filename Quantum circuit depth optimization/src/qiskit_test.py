@@ -4,13 +4,8 @@ from qiskit import QuantumCircuit
 from qiskit.converters import circuit_to_dag
 
 def calculate_circuit_depths(folder_path, output_file="qiskit.txt"):
-    """
-    Calculate the depth of each QASM file using Qiskit's standard method and save results to a text file.
-    
-    Args:
-        folder_path (str): Path to the folder containing QASM files.
-        output_file (str): Path to the output text file.
-    """
+    # calculates the depth of each QASM file using Qiskit's standard method and save results to a text file.
+   
     # Get all .qasm files in the folder
     qasm_files = glob.glob(os.path.join(folder_path, "*.qasm"))
     
