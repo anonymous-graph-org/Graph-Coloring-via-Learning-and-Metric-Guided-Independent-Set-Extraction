@@ -8,20 +8,7 @@ from src.predict_mis import predict_mis
 
 
 def predict_colors(model, adj_list, time_budget=1000, max_queue_size=4, weights=None):
-    """
-    Implements tree search algorithm to find maximum independent set using
-    multiple probability maps from trained GCN model. Uses NumPy adjacency list.
-
-    Args:
-        model: Trained DeepGCN model
-        adj_list (numpy.ndarray): Adjacency list representation of the graph
-        time_budget (int): Time limit in seconds
-        max_queue_size (int): Maximum number of states to keep in queue
-        weights (list): Weights for different metrics [w_edge_density, w_avg_degree, w_progress, w_efficiency]
-
-    Returns:
-        int: Minimum number of colors required
-    """
+    
     # Default weights if none provided: edge density (0.4), avg degree (0.3), progress (-0.2), efficiency (-0.1)
     if weights is None:
         weights = [0.4, 0.3, -0.2, -0.1]
