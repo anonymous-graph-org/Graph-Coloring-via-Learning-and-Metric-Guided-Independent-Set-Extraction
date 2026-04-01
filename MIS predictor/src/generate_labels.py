@@ -2,10 +2,10 @@ from load_graphs import load_graphs_from_file
 import pickle
 from gurobi_mis import gurobi_multiple_mis
 
-output_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_labels.pickle'
-graph_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/networkx_graphs.pkl'
-names_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_names.pkl'
-colors_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_colors.pkl'
+output_file = 'graph_labels.pickle'
+graph_file = 'networkx_graphs.pkl'
+names_file = 'graph_names.pkl'
+colors_file = 'graph_colors.pkl'
 graphs,names,colors = load_graphs_from_file(graph_file,names_file,colors_file)
 
 graph_mis_dict = {}
