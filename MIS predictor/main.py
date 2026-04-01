@@ -12,8 +12,6 @@ if __name__ == "__main__":
     label_file = 'graph_labels.pickle'
     output_file = 'output_basic.txt'
     save_path = 'gcn_model.pth'
-    # names_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_names.pkl'
-    # colors_file = '/Users/ACER/Desktop/basicMIS_multiplesolns/graph_colors.pkl'
 
     graphs = load_data(graph_file)
     sys.stdout = open(output_file, 'w', buffering=1) 
