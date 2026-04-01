@@ -128,15 +128,7 @@ class Degree12Reducer:
 
 
 def networkx_to_adj_list(nx_graph):
-    """
-    Convert a NetworkX graph to an adjacency list representation.
-
-    Args:
-        nx_graph (networkx.Graph): NetworkX graph
-
-    Returns:
-        list: Adjacency list where adj_list[i] contains neighbors of node i
-    """
+    
     # Get number of nodes
     num_nodes = nx_graph.number_of_nodes()
 
@@ -161,18 +153,7 @@ def networkx_to_adj_list(nx_graph):
 
 
 def load_model(model_path, model_class, device, *model_args, **model_kwargs):
-    """
-    Load a trained model from the specified path.
-
-    Args:
-        model_path (str): Path to the saved model.
-        model_class (torch.nn.Module): The model class to load.
-        *model_args: Arguments to pass to model_class constructor.
-        **model_kwargs: Keyword arguments to pass to model_class constructor.
-
-    Returns:
-        torch.nn.Module: The loaded model.
-    """
+   
     # 1. Decide device safely
     # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -185,14 +166,6 @@ def load_model(model_path, model_class, device, *model_args, **model_kwargs):
 
     # 4. Move model to device
     model.to(device)
-
-    """ Load state dictionary
-    try:
-        # Try loading with specified map_location
-        model.load_state_dict(torch.load(model_path, map_location=torch.device('cuda')))
-    except:
-        # Fallback to default loading
-        model.load_state_dict(torch.load(model_path))"""
 
     # Set to evaluation mode
     model.eval()
@@ -291,19 +264,7 @@ class DeepGCN(nn.Module):
         return adj_tensor, degree_tensor, features_tensor
 
 def predict_colors(model, adj_list, device, time_budget=1000, max_queue_size=4):
-    """
-    Implements tree search algorithm to find maximum independent set using
-    multiple probability maps from trained GCN model. Uses NumPy adjacency list.
-
-    Args:
-        model: Trained DeepGCN model
-        adj_list (numpy.ndarray): Adjacency list representation of the graph
-        time_budget (int): Time limit in seconds
-        max_queue_size (int): Maximum number of states to keep in queue
-
-    Returns:
-        int: Minimum number of colors required
-    """
+    
     num_nodes = len(adj_list)
     max_degree = max(len(neighbors) for neighbors in adj_list)
 
@@ -475,21 +436,7 @@ def predict_colors(model, adj_list, device, time_budget=1000, max_queue_size=4):
 
 
 def predict_mis(model, adj_list, device, time_budget=60, num_maps=32, max_solutions=16):
-    """
-    Optimized tree search algorithm to find multiple maximum independent sets using
-    multiple probability maps from trained GCN model. Uses NumPy adjacency list representation.
-
-    Args:
-        model: Trained DeepGCN model
-        adj_list (numpy.ndarray): Adjacency list representation of the graph
-                                 [node_idx][neighbor_indices]
-        time_budget (int): Time limit in seconds
-        num_maps (int): Number of probability maps to generate
-        max_solutions (int): Maximum number of solutions to return
-
-    Returns:
-        list: List of MIS solutions (each a dict of node indices) with the best size
-    """
+    
     device = next(model.parameters()).device
     model.eval()
 
@@ -711,19 +658,7 @@ class ValueAwareGraphDataset(Dataset):
 
 
 def load_value_aware_model(model_path, device, hidden_dim=32, num_layers=20, num_maps=32):
-    """
-    Load a trained ValueAwareDeepGCN model.
-
-    Args:
-        model_path (str): Path to saved model state dict
-        hidden_dim (int): Hidden dimension size
-        num_layers (int): Number of GCN layers
-        num_maps (int): Number of probability maps
-        device (str): Device to load model to ('cpu' or 'cuda')
-
-    Returns:
-        nn.Module: Loaded ValueAwareDeepGCN model
-    """
+    
     model = ValueAwareDeepGCN(
         hidden_dim=hidden_dim,
         num_layers=num_layers,
@@ -1586,18 +1521,7 @@ def build_undirected_graph(adj_list):
 
 
 def load_graphs_from_file(graphs_file, names_file, colors_file, return_nx=False):
-    """
-    Loads graphs, their names, and their colors from pickle files and converts graphs
-    to NumPy adjacency list representation or keeps them as NetworkX graphs.
-
-    Parameters:
-        graphs_file (str): Path to the pickle file containing the graphs.
-        names_file (str): Path to the pickle file containing the graph names.
-        colors_file (str): Path to the pickle file containing the graph colors.
-        return_nx (bool): If True, return original NetworkX graphs instead of adjacency lists
-    Returns:
-        tuple: A list of graphs (as adj lists or NetworkX graphs), a list of graph names, and a list of graph colors.
-    """
+   
     with open(graphs_file, 'rb') as file:
         graphs_dict = pickle.load(file)
 
